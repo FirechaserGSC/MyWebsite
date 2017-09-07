@@ -1,0 +1,29 @@
+<% include partials/header %>
+
+	<div class="container">
+		<header class="jumbotron">
+			<h1>blogs</h1>
+			<p>View blogs</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/blogs/new">Add new blog</a>
+			</p>
+		</header>
+
+		<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+			<% blogs.forEach(function(blog) { %>
+				<div class="col-md-3 col-sm-6">
+					<div class="thumbnail">
+						<img src="<%=blog.title%>">
+						<div class="caption">
+							<h4><%= blog.abstract%></h4>
+						</div>
+					</div>
+				</div>
+			<% }); %>
+
+
+		</div>
+
+	</div>
+
+<% include partials/footer %>
