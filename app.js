@@ -11,6 +11,7 @@ app.set("view engine", "ejs");
 // SCHEMA SETUP
 var blogSchema = new mongoose.Schema({
     title: String,
+    dashedTitle: String,
     abstract: String,
     body: String
 });
@@ -34,7 +35,8 @@ app.get("/blogs", function(req, res) {
 app.post("/blogs", function(req, res) {
   var title = req.body.title;
   var abstract = req.body.abstract;
-  var newBlog = {title: title, abstract: abstract};
+  var dashedTitle = title.replace(/\s+/g, '-').toLowerCase();
+  var newBlog = {title: title, dashedTitle: dashedTitle, abstract: abstract};
 
   Blog.create(newBlog, function(err, newlyCreatedBlog) {
     if (err) {
@@ -42,16 +44,25 @@ app.post("/blogs", function(req, res) {
     } else {
       res.redirect("/blogs");
     }
-  })
-})
+  });
+});
 
 app.get("/blogs/new", function(req, res) {
 	res.render("newblog.ejs");
 });
 
-app.get("blogs/:title", function(req, res) {
-  res.send("SHOW BLOG");
-})
+app.get("/blogs/:dashedTitle", function(req, res) {
+  //res.send("SHOW BLOG");
+  Blog.find({dashedTitle: req.params.dashedTitle}, function(err, foundBlog) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(foundBlog);
+      res.render("view-blog", {blog: foundBlog});
+    }
+  });
+
+});
 
 app.listen("3000", function() {
   console.log("server started");

@@ -13,7 +13,11 @@
 			<% blogs.forEach(function(blog) { %>
 				<div class="col-md-3 col-sm-6">
 					<div class="thumbnail">
-						<h3><%=blog.title%></h3>
+						<h3>
+							<a href="/blogs/<%= blog.dashedTitle %>">
+								<%=blog.title%>
+							</a>
+						</h3>
 						<div class="caption">
 							<h4><%= blog.abstract%></h4>
 						</div>
