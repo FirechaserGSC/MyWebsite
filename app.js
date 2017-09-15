@@ -5,13 +5,17 @@ var mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/my_website");
 
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+
 
 // SCHEMA SETUP
 var blogSchema = new mongoose.Schema({
     title: String,
     dashedTitle: String,
+    image: String,
+    createdTime: {type: Date, default: Date.now},
     abstract: String,
     body: String
 });
@@ -33,12 +37,12 @@ app.get("/blogs", function(req, res) {
 });
 
 app.post("/blogs", function(req, res) {
-  var title = req.body.title;
-  var abstract = req.body.abstract;
-  var dashedTitle = title.replace(/\s+/g, '-').toLowerCase();
-  var newBlog = {title: title, dashedTitle: dashedTitle, abstract: abstract};
+  // var title = req.body.title;
+  // var image = req.body.image;
+  // var dashedTitle = title.replace(/\s+/g, '-').toLowerCase();
+  // var newBlog = {title: title, dashedTitle: dashedTitle, image: image};
 
-  Blog.create(newBlog, function(err, newlyCreatedBlog) {
+  Blog.create(req.body.blog, function(err, newlyCreatedBlog) {
     if (err) {
       console.log(err);
     } else {
@@ -51,13 +55,12 @@ app.get("/blogs/new", function(req, res) {
 	res.render("newblog.ejs");
 });
 
-app.get("/blogs/:dashedTitle", function(req, res) {
+app.get("/blogs/:id", function(req, res) {
   //res.send("SHOW BLOG");
-  Blog.find({dashedTitle: req.params.dashedTitle}, function(err, foundBlog) {
+  Blog.findById(req.params.id, function(err, foundBlog) {
     if (err) {
       console.log(err);
     } else {
-      console.log(foundBlog);
       res.render("view-blog", {blog: foundBlog});
     }
   });

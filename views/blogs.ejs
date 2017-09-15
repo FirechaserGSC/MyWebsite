@@ -1,27 +1,19 @@
 <% include partials/header %>
 
 	<div class="container">
-		<header class="jumbotron">
-			<h1>blogs</h1>
-			<p>View blogs</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="/blogs/new">Add new blog</a>
-			</p>
-		</header>
 
 		<div class="row text-center" style="display: flex; flex-wrap: wrap;">
 			<% blogs.forEach(function(blog) { %>
-				<div class="col-md-3 col-sm-6">
-					<div class="thumbnail">
-						<h3>
-							<a href="/blogs/<%= blog.dashedTitle %>">
+				<div>
+						<h2>
+							<a href="/blogs/<%= blog._id %>">
 								<%=blog.title%>
 							</a>
-						</h3>
-						<div class="caption">
-							<h4><%= blog.abstract%></h4>
-						</div>
-					</div>
+						</h2>
+						<img src="<%=blog.image%>">
+						<span><%= blog.createdDate %></span>
+						<p><%= blog.body %><p>
+						<a href="/blogs/<%= blog._id %>">Read More</a>
 				</div>
 			<% }); %>
 
