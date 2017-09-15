@@ -26,6 +26,7 @@ app.get("/", function(req, res) {
   res.render("index");
 });
 
+// show all blogs
 app.get("/blogs", function(req, res) {
   Blog.find({}, function(err, blogs) {
     if (err) {
@@ -36,16 +37,14 @@ app.get("/blogs", function(req, res) {
   });
 });
 
+// create a new blog
 app.post("/blogs", function(req, res) {
-  // var title = req.body.title;
-  // var image = req.body.image;
-  // var dashedTitle = title.replace(/\s+/g, '-').toLowerCase();
-  // var newBlog = {title: title, dashedTitle: dashedTitle, image: image};
-
+  req.body.blog.dashedTitle = req.body.blog.title.replace(/\s+/g, '-').toLowerCase();
   Blog.create(req.body.blog, function(err, newlyCreatedBlog) {
     if (err) {
       console.log(err);
     } else {
+      console.log(newlyCreatedBlog);
       res.redirect("/blogs");
     }
   });
@@ -55,17 +54,21 @@ app.get("/blogs/new", function(req, res) {
 	res.render("newblog.ejs");
 });
 
-app.get("/blogs/:id", function(req, res) {
-  //res.send("SHOW BLOG");
-  Blog.findById(req.params.id, function(err, foundBlog) {
+// show one blog
+app.get("/blogs/:dashedTitle", function(req, res) {
+  Blog.findOne({dashedTitle: req.params.dashedTitle}, function(err, foundBlog) {
     if (err) {
       console.log(err);
     } else {
-      res.render("view-blog", {blog: foundBlog});
+      res.render("viewblog", {blog: foundBlog});
     }
   });
-
 });
+
+// edit blog
+app.get("/blogs/:id/edit", function(req, res) {
+  res.render("edit");
+})
 
 app.listen("3000", function() {
   console.log("server started");
