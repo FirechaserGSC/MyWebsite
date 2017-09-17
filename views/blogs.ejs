@@ -1,25 +1,29 @@
 <% include partials/header %>
 
 	<div class="container">
-
 		<div class="row">
 			<% blogs.forEach(function(blog) { %>
-				<div>
-						<h2>
+				<div class="blog-post">
+						<h2 class="blog-post-title">
 							<a href="/blogs/<%= blog.dashedTitle %>">
 								<%=blog.title%>
 							</a>
 						</h2>
-						<img src="<%= blog.image %>">
-						<span><%= blog.createdTime.toDateString() %></span>
-						<p><%= blog.body.substring(0, 100) %>...<p>
-						<a href="/blogs/<%= blog._id %>">Read More</a>
+						<div class="blog-item">
+							<div class="blog-image">
+								<img src="<%= blog.image %>">
+							</div>
+							<div class="blog-content">
+
+							</div>
+							<span><%= blog.createdTime.toDateString() %></span>
+							<p><%= blog.body.substring(0, 100) %>...<p>
+							<a href="/blogs/<%= blog._id %>">Read More</a>
+						</div>
+
 				</div>
 			<% }); %>
-
-
 		</div>
-
 	</div>
 
 <% include partials/footer %>
