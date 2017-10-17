@@ -11,6 +11,11 @@
   margin-top: 20px;
 }
 
+.blog-post-image {
+  width: 300px;
+  height: 300px;
+}
+
 #delete {
   display: inline;
 }

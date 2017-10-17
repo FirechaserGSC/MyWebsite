@@ -4,23 +4,29 @@
 		<div class="row">
 			<% blogs.forEach(function(blog) { %>
 				<div class="blog-post">
-						<h2 class="blog-post-title">
-							<a href="/blogs/<%= blog.dashedTitle %>">
-								<%=blog.title%>
-							</a>
-						</h2>
-						<div class="blog-item">
-							<div class="blog-image">
-								<img src="<%= blog.image %>">
+						<div class="blog-post-item">
+							<div class="col-md-8 clearfix">
+								<h2 class="blog-post-title">
+									<a href="/blogs/<%= blog.dashedTitle %>">
+										<%=blog.title%>
+									</a>
+								</h2>
+								<div class="blog-post-content">
+									<p><%= blog.body.substring(0, 200) %><p>
+								</div>
+								<div class="blog-read-more">
+									<a href="/blogs/<%= blog.dashedTitle %>">
+										<span>Read More</span>
+									</a>
+								</div>
+								<div class="blog-post-meta">
+									<span><%= blog.createdTime.toDateString() %></span>
+								</div>
 							</div>
-							<div class="blog-content">
-
+							<div class="col-md-4 pull-right">
+								<img class="blog-post-image" src="<%= blog.image %>" alt="">
 							</div>
-							<span><%= blog.createdTime.toDateString() %></span>
-							<p><%= blog.body.substring(0, 100) %>...<p>
-							<a href="/blogs/<%= blog._id %>">Read More</a>
 						</div>
-
 				</div>
 			<% }); %>
 		</div>
