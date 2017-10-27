@@ -1,5 +1,7 @@
 module.exports = {
   googleClientID:
-    '356195426300-evsos3u8co2lmek6n283d7tcvfa34loq.apps.googleusercontent.com',
-  googleClientSecret: 'UTW-Mr96-201GNdXo7gfgWlq'
+    '356195426300-b69fe7jf94fv1r383dskj7s08tc8lnhq.apps.googleusercontent.com',
+  googleClientSecret: 'lgSGuxeaMK2dVA1eBbyIFkOl',
+  mongoUri: 'mongodb://localhost/emaily_dev',
+  cookieKey: 'asdfghjklqwertyuiopzxcvbnm'
 };
