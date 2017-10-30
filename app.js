@@ -117,6 +117,7 @@ const passport = require('passport');
 const keys = require('./config/keys.js');
 
 require('./models/User');
+require('./models/Blog');
 require('./services/passport');
 
 mongoose.connect(keys.mongoUri);
@@ -134,6 +135,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/blogRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

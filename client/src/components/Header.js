@@ -7,17 +7,9 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href="/auth/google">LOGIN</a>
-          </li>
-        );
+        return <a href="/auth/google">LOGIN</a>;
       default:
-        return (
-          <li>
-            <a href="/api/logout">LOGOUT</a>
-          </li>
-        );
+        return <a href="/api/logout">LOGOUT</a>;
     }
   }
 
@@ -25,20 +17,18 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="brand-logo">
+          <a href="/" className="brand-logo">
             SG
           </a>
 
           <ul className="right">
             <li>
-              <a href="sass.html">BLOGS</a>
+              <a href="/blogs">BLOGS</a>
             </li>
             <li>
               <a href="badges.html">ABOUT</a>
             </li>
-            <li>
-              <a href="collapsible.html">{this.renderContent()}</a>
-            </li>
+            <li>{this.renderContent()}</li>
           </ul>
         </div>
       </nav>
