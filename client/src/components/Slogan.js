@@ -5,7 +5,7 @@ class Slogan extends Component {
     super(props);
     this.state = {
       count: 0,
-      slogan: '1'
+      slogan: 'System.out.print("Hello, world!")'
     };
   }
 
