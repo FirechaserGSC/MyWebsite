@@ -5,7 +5,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-//import BlogList from './BlogList';
+import BlogList from './BlogList';
 const BlogsNew = () => <h2>BlogsNew</h2>;
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
-            {/*<Route exact path="/blogs" component={BlogList} />*/}
+            <Route exact path="/blogs" component={BlogList} />
             <Route path="/blogs/new" component={BlogsNew} />
           </div>
         </BrowserRouter>

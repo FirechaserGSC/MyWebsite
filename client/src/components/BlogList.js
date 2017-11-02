@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchBlogs } from '../actions';
 import BlogListItem from './BlogListItem';
 
-const BlogList = () => {
+class BlogList extends Component {
   componentDidMount() {
     this.props.fetchBlogs();
   }
-  
-  const blogItems = this.props.items.map(blog => {
-    return <BlogListItem blog={blog} />;
-  });
 
-  return <ul>{blogItems}</ul>;
-};
+  render() {
+    return <div>Blogs</div>;
+  }
+}
 
-export default BlogList;
+function mapStateToProps({ blogs }) {
+  return { blogs };
+}
+
+export default connect(mapStateToProps, { fetchBlogs })(BlogList);
