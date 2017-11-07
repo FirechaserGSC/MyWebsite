@@ -1,7 +1,5 @@
-module.exports = {
-  googleClientID:
-    '356195426300-b69fe7jf94fv1r383dskj7s08tc8lnhq.apps.googleusercontent.com',
-  googleClientSecret: 'lgSGuxeaMK2dVA1eBbyIFkOl',
-  mongoUri: 'mongodb://localhost/emaily_dev',
-  cookieKey: 'asdfghjklqwertyuiopzxcvbnm'
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./prod');
+} else {
+  module.exports = require('./dev');
+}
