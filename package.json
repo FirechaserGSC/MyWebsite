@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "My Personal Website",
   "main": "app.js",
+  "engines": {
+    "node": "8.7.0",
+    "npm": "5.0.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
@@ -21,13 +24,9 @@
   },
   "homepage": "https://github.com/FirechaserGSC/MyWebsite#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
     "concurrently": "^3.5.0",
     "cookie-session": "^2.0.0-beta.3",
-    "ejs": "^2.5.7",
     "express": "^4.15.4",
-    "express-sanitizer": "^1.0.2",
-    "method-override": "^2.3.9",
     "mongoose": "^4.11.10",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",

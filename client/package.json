@@ -19,6 +19,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-typist": "^2.0.4",
+    "react-typist-loop": "0.0.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
