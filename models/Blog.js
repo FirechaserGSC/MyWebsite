@@ -6,7 +6,7 @@ const blogSchema = new Schema({
   dashedTitle: String,
   image: String,
   createdTime: { type: Date, default: Date.now },
-  abstract: String,
+  //abstract: String,
   body: String
 });
 

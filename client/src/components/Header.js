@@ -15,8 +15,8 @@ class Header extends Component {
 
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper">
+      <nav className="white">
+        <div className="nav-wrapper container">
           <a href="/" className="brand-logo">
             SG
           </a>
