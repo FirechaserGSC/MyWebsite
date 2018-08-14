@@ -15,7 +15,7 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="white">
+      <nav style={{boxShadow: "none"}} className="white">
         <div className="nav-wrapper container">
           <a href="/" className="brand-logo">
             SG

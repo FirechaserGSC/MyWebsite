@@ -17,15 +17,15 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className="container">
           <BrowserRouter>
             <div>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/blogs" component={BlogList} />
-              <Route path="/blogs/new" component={NewBlog} />
+              <div className="container">
+                <Route exact path="/blogs" component={BlogList} />
+                <Route path="/blogs/new" component={NewBlog} />
+              </div>
             </div>
           </BrowserRouter>
-        </div>
       </div>
     );
   }
